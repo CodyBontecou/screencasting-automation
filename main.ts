@@ -1,4 +1,4 @@
-import { parseArgs, promisify } from 'node:util'
+import { parseArgs } from 'node:util'
 import { exec } from 'node:child_process'
 import { toggleZoom } from './toggle-vscode-zoom'
 
