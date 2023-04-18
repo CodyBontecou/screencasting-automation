@@ -1,30 +1,35 @@
 import fs from 'fs'
 import path from 'path'
 
-const __dirname = path.resolve()
+export function toggleZoom(zoom: string) {
+  try {
+    const __dirname = path.resolve()
+    const filePath = path.join(
+      __dirname,
+      '..',
+      '..',
+      'Library',
+      'Application Support',
+      'Code',
+      'User',
+      'settings.json'
+    )
+    const encoding = 'utf8'
+    const zoomOptions = {
+      in: 5,
+      out: 2,
+    }
+    const text = fs.readFileSync(filePath, encoding)
+    const obj = JSON.parse(text)
 
-const filePath = path.join(
-  __dirname,
-  '..',
-  '..',
-  'Library',
-  'Application Support',
-  'Code',
-  'User',
-  'settings.json'
-)
-const encoding = 'utf8'
-const smallZoom = 2
-const largeZoom = 5
+    if (zoomOptions[zoom]) {
+      obj['window.zoomLevel'] = zoomOptions[zoom]
+    } else {
+      throw new Error('zoom parameter has to be either "in" or "out"')
+    }
 
-try {
-  const text = fs.readFileSync(filePath, encoding)
-  const obj = JSON.parse(text)
-
-  obj['window.zoomLevel'] =
-    obj['window.zoomLevel'] === largeZoom ? smallZoom : largeZoom
-
-  fs.writeFileSync(filePath, JSON.stringify(obj), encoding)
-} catch (error) {
-  console.error(`An error occurred: ${error}`)
+    fs.writeFileSync(filePath, JSON.stringify(obj), encoding)
+  } catch (error) {
+    console.error(`An error occurred: ${error}`)
+  }
 }
