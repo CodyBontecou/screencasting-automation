@@ -10,14 +10,22 @@ const args = parseArgs({
       type: 'string',
       short: 'z',
     },
+    web: {
+      type: 'boolean',
+      short: 'w',
+    },
   },
 })
 
 const { values, positionals } = args
 
-const zoom = values.zoom
+const { web, zoom } = values
 
 if (zoom) {
   toggleZoom(zoom)
   await exec(`osascript ./toggle-cursor-size.applescript ${zoom}`)
+}
+
+if (web) {
+  await exec(`osascript ./chrome.applescript`)
 }
