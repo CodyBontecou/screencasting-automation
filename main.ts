@@ -1,6 +1,8 @@
-import { parseArgs } from 'node:util'
-import { exec } from 'node:child_process'
+import { parseArgs, promisify } from 'node:util'
+import { exec as e } from 'node:child_process'
 import { toggleZoom } from './toggle-vscode-zoom'
+
+const exec = promisify(e)
 
 const args = parseArgs({
   options: {
@@ -17,5 +19,5 @@ const zoom = values.zoom
 
 if (zoom) {
   toggleZoom(zoom)
-  exec(`osascript ./toggle-cursor-size.applescript ${zoom}`)
+  await exec(`osascript ./toggle-cursor-size.applescript ${zoom}`)
 }
