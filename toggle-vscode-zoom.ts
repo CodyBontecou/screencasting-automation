@@ -8,6 +8,7 @@ export function toggleZoom(zoom: string) {
       __dirname,
       '..',
       '..',
+      '..',
       'Library',
       'Application Support',
       'Code',

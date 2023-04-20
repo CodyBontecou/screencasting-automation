@@ -17,9 +17,11 @@ const args = parseArgs({
   },
 })
 
-const { values, positionals } = args
+const { values } = args
 
 const { web, zoom } = values
+
+await exec('osascript ./toggle-dnd.applescript')
 
 if (zoom) {
   toggleZoom(zoom)
