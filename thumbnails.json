@@ -5,6 +5,26 @@
   },
   {
      "id":"02",
-     "title":"Test"
+     "title":"Toggle Cursor Size"
+  },
+  {
+     "id":"03",
+     "title":"VSCode Zoom"
+  },
+  {
+     "id":"04",
+     "title":"Creating a CLI"
+  },
+  {
+     "id":"05",
+     "title":"Controlling Chrome"
+  },
+  {
+     "id":"06",
+     "title":"Do Not Disturb"
+  },
+  {
+     "id":"07",
+     "title":"JSON + Figma"
   }
 ]
